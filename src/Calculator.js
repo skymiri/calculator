@@ -54,7 +54,7 @@ function Calculator() {
 
   return (
     <div>
-      <h1>사칙연산 계산기</h1>
+      <h1>Apple Calculator</h1>
       <input
         type="text"
         placeholder="계산식을 입력하세요 (예: 3 + 5)"
