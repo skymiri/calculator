@@ -1,10 +1,15 @@
 import React, { useState } from "react";
+import { calculatorButtons } from "./Button.js"; // 버튼 데이터 가져오기
 
 function Calculator() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState("결과:");
   const [error, setError] = useState("에러:");
   const [history, setHistory] = useState([]);
+
+  const handleButtonClick = (value) => {
+    setInput((prevInput) => prevInput + value);
+  };
 
   const calculate = () => {
     const regex = /([-+*/])|\d+/g;
@@ -54,22 +59,36 @@ function Calculator() {
 
   return (
     <div>
-      <h1>사칙연산 계산기</h1>
+      <h1>Apple Calculator</h1>
       <input
         type="text"
         placeholder="계산식을 입력하세요 (예: 3 + 5)"
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
+      <div className="button-container">
+        {/* 버튼 데이터를 사용하여 버튼 생성 */}
+        {calculatorButtons.map((button, index) => (
+          <button
+            key={index}
+            className={button.className}
+            onClick={() => handleButtonClick(button.value)}
+          >
+            {button.text}
+          </button>
+        ))}
+      </div>
       <button onClick={calculate}>계산하기</button>
       <p>{result}</p>
       <p>{error}</p>
-      <p>history</p>
-      <ul>
-        {history.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
+      <div>
+        <p>계산 히스토리</p>
+        <ul>
+          {history.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
