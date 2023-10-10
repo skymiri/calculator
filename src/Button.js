@@ -1,15 +1,27 @@
 export const calculatorButtons = [
   {
     type: "clear",
-    className: "ac",
-    text: "AC",
-    value: "All Clear",
-  },
-  {
-    type: "clear",
     className: "c",
     text: "C",
     value: "Clear",
+  },
+  {
+    type: "operator",
+    className: "+/-",
+    text: "+/-",
+    value: "+/-",
+  },
+  {
+    type: "operator",
+    className: "percent",
+    text: "%",
+    value: "%",
+  },
+  {
+    type: "operator",
+    className: "divide",
+    text: "\u00f7",
+    value: "/",
   },
   {
     type: "number",
@@ -30,6 +42,12 @@ export const calculatorButtons = [
     value: 9,
   },
   {
+    type: "operator",
+    className: "multiply",
+    text: "\u00d7",
+    value: "*",
+  },
+  {
     type: "number",
     className: "four",
     text: 4,
@@ -46,6 +64,12 @@ export const calculatorButtons = [
     className: "six",
     text: 6,
     value: 6,
+  },
+  {
+    type: "operator",
+    className: "subtract",
+    text: "-",
+    value: "-",
   },
   {
     type: "number",
@@ -66,6 +90,12 @@ export const calculatorButtons = [
     value: 3,
   },
   {
+    type: "operator",
+    className: "add",
+    text: "+",
+    value: "+",
+  },
+  {
     type: "number",
     className: "zero",
     text: 0,
@@ -73,27 +103,9 @@ export const calculatorButtons = [
   },
   {
     type: "operator",
-    className: "multiply",
-    text: "\u00d7",
-    value: "*",
-  },
-  {
-    type: "operator",
-    className: "divide",
-    text: "\u00f7",
-    value: "/",
-  },
-  {
-    type: "operator",
-    className: "add",
-    text: "+",
-    value: "+",
-  },
-  {
-    type: "operator",
-    className: "subtract",
-    text: "-",
-    value: "-",
+    className: "dot",
+    text: ".",
+    value: ".",
   },
   {
     type: "enter",
