@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { calculatorButtons } from "./Button.js"; // 버튼 데이터 가져오기
+import "./Cal.css"; // CSS 파일 가져오기
 
 function Calculator() {
   const [input, setInput] = useState("");
@@ -8,7 +9,12 @@ function Calculator() {
   const [history, setHistory] = useState([]);
 
   const handleButtonClick = (value) => {
-    setInput((prevInput) => prevInput + value);
+    if (value === "Clear") {
+      // 'AC' 버튼 클릭 시 입력 초기화
+      setInput("");
+    } else {
+      setInput((prevInput) => prevInput + value);
+    }
   };
 
   const calculate = () => {
@@ -58,32 +64,34 @@ function Calculator() {
   };
 
   return (
-    <div>
-      <h1>Apple Calculator</h1>
+    <div className="calculator-container">
+      <h1 className="calculator-title">Apple Calculator</h1>
       <input
+        className="calculator-display"
         type="text"
         placeholder="계산식을 입력하세요 (예: 3 + 5)"
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
       <div className="button-container">
-        {/* 버튼 데이터를 사용하여 버튼 생성 */}
         {calculatorButtons.map((button, index) => (
           <button
             key={index}
-            className={button.className}
+            className={`calculator-button ${button.className}`}
             onClick={() => handleButtonClick(button.value)}
           >
             {button.text}
           </button>
         ))}
       </div>
-      <button onClick={calculate}>계산하기</button>
-      <p>{result}</p>
-      <p>{error}</p>
-      <div>
-        <p>계산 히스토리</p>
-        <ul>
+      <button className="calculate-button" onClick={calculate}>
+        계산하기
+      </button>
+      <p className="calculator-result">{result}</p>
+      <p className="calculator-error">{error}</p>
+      <div className="history-container">
+        <p className="history-title">계산 히스토리</p>
+        <ul className="history-list">
           {history.map((item, index) => (
             <li key={index}>{item}</li>
           ))}
